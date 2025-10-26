@@ -51,6 +51,7 @@ public class SelectionSort {
     }
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //сортировка обменом (пузырек)
 
@@ -162,7 +163,22 @@ public class MergeSort {
         }
     }
 }
+public static void main(String[] args) {
+    int[] array = {8, 4, 2, 1};
+    System.out.println("Исходный массив:");
+    printArray(array);
 
+    mergeSort(array);                  // Выполняем сортировку
+
+    System.out.println("\nОтсортированный массив:");
+    printArray(array);
+}
+
+private static void printArray(int[] arr) {
+    for (int num : arr) {
+        System.out.print(num + " ");
+    }
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class ShellSort {
