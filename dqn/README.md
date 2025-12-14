@@ -1,5 +1,5 @@
-Отчет по заданию 18: Reinforcement Learning DQN для игры
-1. Полное задание из методички:
+## Отчет по заданию 18: Reinforcement Learning DQN для игры
+# 1. Полное задание из методички:
 Вариант 18: Reinforcement Learning DQN для игры
 
 Задача: Реализовать Deep Q-Network (DQN) для обучения агента играть в игру.
@@ -30,7 +30,9 @@ Target network обновление
 
 Визуализацию learning curves
 
-2. Алгоритм работы по блокам:
+# 2. Алгоритм работы по блокам:
+
+
 1) Блок импорта библиотек
 python
 import numpy as np
@@ -40,7 +42,9 @@ import matplotlib.pyplot as plt
 import gym
 from typing import List, Tuple, Deque
 import pickle
-2) Блок определения класса NeuralNetwork
+
+
+3) Блок определения класса NeuralNetwork
 python
 class NeuralNetwork:
     def __init__(self, input_size, hidden_sizes, output_size):
@@ -112,7 +116,9 @@ class NeuralNetwork:
             self.biases[i] -= learning_rate * gradients[i][1]
         
         return np.mean(error ** 2)
-3) Блок определения класса DQNAgent
+
+   
+5) Блок определения класса DQNAgent
 python
 class DQNAgent:
     def __init__(self, state_size, action_size, learning_rate=0.001):
@@ -176,18 +182,20 @@ class DQNAgent:
         # Обновление target network
         weights, biases = self.q_network.get_weights()
         self.target_network.set_weights(weights, biases)
-4) Блок основной функции Main()
+
+   
+7) Блок основной функции Main()
 python
 def main():
-    # Загрузка и подготовка среды
+    #Загрузка и подготовка среды
     env = gym.make('CartPole-v1')
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
     
-    # Инициализация модели
+    #Инициализация модели
     agent = DQNAgent(state_size, action_size)
     
-    # Цикл обучения
+    #Цикл обучения
     episode_rewards = []
     for episode in range(100):
         state, _ = env.reset()
@@ -225,7 +233,7 @@ def main():
     
     env.close()
     
-    # Визуализация результатов
+    #Визуализация результатов
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
     plt.plot(episode_rewards)
@@ -244,9 +252,14 @@ def main():
     plt.tight_layout()
     plt.savefig('dqn_results.png', dpi=300)
     plt.show()
-5) Блок выполнения программы
+
+   
+9) Блок выполнения программы
 python
 if __name__ == "__main__":
     main()
-3. Ответ на контрольный вопрос:
+
+   
+# 3. Ответ на контрольный вопрос:
 Вопрос 18: Как Affinity Propagation автоматически определяет количество кластеров?
+Affinity Propagation (AP) — это алгоритм кластеризации, основанный на концепции "обмена сообщениями" между точками данных. В отличие от алгоритмов типа k-means, где количество кластеров (k) задаётся пользователем заранее, AP автоматически определяет оптимальное число кластеров в процессе работы, без необходимости указывать его вручную. Это достигается за счёт следующих ключевых механизмов:
